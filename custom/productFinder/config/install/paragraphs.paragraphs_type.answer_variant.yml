@@ -1,0 +1,12 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - productFinder
+id: answer_variant
+label: 'Answer Variant'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

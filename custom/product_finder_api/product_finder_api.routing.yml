@@ -1,0 +1,7 @@
+product_finder_api.show:
+  path: '/product_question_answer_graph'
+  defaults:
+    _controller: '\Drupal\product_finder_api\Controller\ProductFinderController::show'
+    _title: 'Product Question Answer Graph'
+  requirements:
+    _permission: 'access content'

@@ -1,0 +1,46 @@
+<?php
+use Drupal\node\Entity\Node;
+use Drupal\Core\Messenger\MessengerTrait;
+use GuzzleHttp\client;
+use GuzzzleHttp\Exception\RequestException;
+
+
+function addImportContentItem($item, &$context) {
+  $context['sandbox']['current_item'] = $item;
+  $message = 'Creating ' . $item['title'];
+  $results = [];
+  _batch_example_create_node($item);
+  $context['message'] = $message;
+  $context['results'][] = $item;
+}
+function addImportContentItemCallback($success, $results, $operations) {
+  if($success) {
+    $message = \Drupal::translation()->formatPlural(
+        count($results),
+        'One item processed.', '@count items processed.'
+    );
+  }
+  else {
+      $message = t('Finished with an error.');
+  }
+  \Drupal::messenger()->addMessage($message);
+}
+
+function _batch_example_create_node($item) {
+  $node_data['type'] = 'page';
+  $node_data['title'] = $item['title'];
+  $node_data['body']['value'] = $item['content'];
+  $node = Node::create($node_data);
+  $node->setPublished(TRUE);
+  $node->save();
+}
+
+function _cron_example_create_node($item){
+  $node_data['type'] = 'page';
+  $node_data['title'] = $item['name'];
+  $node_data['body']['value'] = $item['year'] . '--' . $item['color'];
+  $node = Node::create($node_data);
+  $node->setPublished(TRUE);
+  $node->save();
+}
+

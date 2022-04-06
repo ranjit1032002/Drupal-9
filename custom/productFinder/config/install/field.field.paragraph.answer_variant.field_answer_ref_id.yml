@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_answer_ref_id
+    - paragraphs.paragraphs_type.answer_variant
+id: paragraph.answer_variant.field_answer_ref_id
+field_name: field_answer_ref_id
+entity_type: paragraph
+bundle: answer_variant
+label: 'Answer ref Id'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,7 @@
+table.show:
+  path: '/table'
+  defaults:
+    _controller: '\Drupal\table\Controller\TableController::show'
+    _title: 'Table'
+  requirements:
+    _permission: 'access content'

@@ -1,0 +1,24 @@
+uuid: 0df06815-a98e-4ca5-9adb-be025014110b
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+  enforced:
+    module:
+      - productFinder
+id: paragraph.field_answer_ref_id
+field_name: field_answer_ref_id
+entity_type: paragraph
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

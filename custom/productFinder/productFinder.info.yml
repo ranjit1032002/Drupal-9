@@ -1,0 +1,5 @@
+name: Product Finder
+type: module
+description: Creating product finder module
+package: Finder
+core_version_requirement: ^9

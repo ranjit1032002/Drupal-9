@@ -1,0 +1,30 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_answer_field
+    - node.type.productfinder_question
+    - paragraphs.paragraphs_type.answer_variant
+  module:
+    - entity_reference_revisions
+id: node.productfinder_question.field_answer_field
+field_name: field_answer_field
+entity_type: node
+bundle: productfinder_question
+label: 'Answer Field'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      answer_variant: answer_variant
+    negate: 0
+    target_bundles_drag_drop:
+      answer_variant:
+        weight: 2
+        enabled: true
+field_type: entity_reference_revisions

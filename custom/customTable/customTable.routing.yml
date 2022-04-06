@@ -1,0 +1,7 @@
+customTable.form:
+  path: '/adddata'
+  defaults:
+    _title: 'Add Students'
+    _form: '\Drupal\customTable\Form\form'
+  requirements:
+    _permission: 'access content'

@@ -1,0 +1,35 @@
+<?php
+use Drupal\Core\Database\Database;
+
+/**
+ * Implements hook_schema().
+ */
+function customTable_schema() {
+
+  $schema['students'] = array(
+    'description' => 'Store Students',
+    'fields' => array(
+      'Id' => array(
+        'type' => 'serial',
+        'not null' => TRUE,
+        'description' => 'Primary Key: Unique Student ID.',
+      ),
+      'Student_Name' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Name of the Student.',
+      ),
+      'Email' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'The Email of the developer in years.',
+      ),
+    ),
+    'primary key' => array('Id'),
+  );
+  return $schema;
+}

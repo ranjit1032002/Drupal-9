@@ -1,0 +1,11 @@
+<?php
+/**
+ * Implements hook_theme().
+ */
+function product_finder_api_theme($existing, $type, $theme, $path) {
+  return [
+    'product-finder-api' => [
+      'variables' => ['url' => NULL],
+    ],
+  ];
+}

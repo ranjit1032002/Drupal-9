@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_answer_type
+    - paragraphs.paragraphs_type.answer_variant
+  module:
+    - options
+id: paragraph.answer_variant.field_answer_type
+field_name: field_answer_type
+entity_type: paragraph
+bundle: answer_variant
+label: 'Answer Type'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: '1'
+default_value_callback: ''
+settings: {  }
+field_type: list_string

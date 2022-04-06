@@ -1,0 +1,63 @@
+<?php
+use Drupal\views\viewExecutable;
+use Drupal\views\Plugin\views\query\QueryPluginBase;
+use \Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Entity\EntityInterface;
+
+/**
+ * implement hook_views_query_alter().
+*/
+function basic_page_views_query_alter(ViewExecutable $view, QueryPluginBase $query){
+
+  if($view->id() == 'user_preferred_books'){
+    $preffered=[];
+    $user=\Drupal\user\Entity\User::load(\Drupal::currentUser()->id());
+    $prefferedbookIds=$user->get('field_my_prefference')->getValue();
+
+    if(empty($prefferedbookIds)) return;
+
+    foreach($prefferedbookIds as $prefferedbookId){
+        $preffered[]=$prefferedbookId['target_id'];
+    }
+    $query->addWhere('','node__field_genre.field_genre_target_id',$preffered,'IN');
+  }
+}
+
+
+function basic_page_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  //  dpm($form_id);
+  if($form_id == 'node_authors_edit_form' || $form_id == 'node_authors_form') {
+    $form['field_maturity']['#disabled'] = TRUE;
+    $form['field_maturity']['#attributes']['class'][] = 'hidden';
+    $form['field_maturity']['#access'] = FALSE;
+    $form['#validate'][] = 'validate_form';
+    dpm($form['#validate']);
+  }
+}
+
+
+
+function validate_form(&$form, FormStateInterface $form_state) {
+  $textage = (int)$form_state->getValue("field_age")[0]['value'];
+  if($textage <= 0 || $textage > 100) {
+    $form_state->setErrorByName('field_age',t('Value must be integer between 0 and 100'));
+  }
+}
+
+function basic_page_entity_presave(EntityInterface $entity) {
+  // dpm($entity);
+  if($entity->bundle() != 'authors') return;
+  $resage = (int)$entity->field_age->value;
+  $maturity = "none";
+  if($resage >= 13 && $resage <= 19) {
+    $maturity = "teen";
+  } elseif($resage > 19) {
+    $maturity = "adult";
+  } else {
+    $maturity = "pre-teen";
+  }
+  $entity->set('field_maturity', $maturity);
+}
+
+
+

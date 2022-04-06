@@ -1,0 +1,163 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.answer_variant.field_answer_ref_id
+    - field.field.paragraph.answer_variant.field_answer_title
+    - field.field.paragraph.answer_variant.field_answer_type
+    - field.field.paragraph.answer_variant.field_category_link
+    - field.field.paragraph.answer_variant.field_next_question
+    - field.field.paragraph.answer_variant.field_product_link
+    - field.field.paragraph.answer_variant.field_shade_selector
+    - paragraphs.paragraphs_type.answer_variant
+  module:
+    - conditional_fields
+    - field_layout
+    - layout_discovery
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
+id: paragraph.answer_variant.default
+targetEntityType: paragraph
+bundle: answer_variant
+mode: default
+content:
+  field_answer_ref_id:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_answer_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_answer_type:
+    type: options_select
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_category_link:
+    type: entity_reference_autocomplete
+    weight: 5
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings:
+      conditional_fields:
+        d8b8b99b-5c57-4009-b0a0-856f588cfacd:
+          entity_type: paragraph
+          bundle: answer_variant
+          dependee: field_answer_type
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: '3'
+            effect: show
+            effect_options: {  }
+            selector: ''
+  field_next_question:
+    type: entity_reference_autocomplete
+    weight: 3
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings:
+      conditional_fields:
+        cf049be8-56a7-458b-9843-e186870efe24:
+          entity_type: paragraph
+          bundle: answer_variant
+          dependee: field_answer_type
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: '1'
+            effect: show
+            effect_options: {  }
+            selector: ''
+  field_product_link:
+    type: entity_reference_autocomplete
+    weight: 4
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings:
+      conditional_fields:
+        f27064fb-4593-47a0-b67f-2a4bd23f5a1e:
+          entity_type: paragraph
+          bundle: answer_variant
+          dependee: field_answer_type
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: '2'
+            effect: show
+            effect_options: {  }
+            selector: ''
+  field_shade_selector:
+    type: entity_reference_autocomplete
+    weight: 6
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings:
+      conditional_fields:
+        5989e2f6-0242-4573-a2ce-54f9849ad90f:
+          entity_type: paragraph
+          bundle: answer_variant
+          dependee: field_answer_type
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: '4'
+            effect: show
+            effect_options: {  }
+            selector: ''
+hidden:
+  created: true
+  status: true

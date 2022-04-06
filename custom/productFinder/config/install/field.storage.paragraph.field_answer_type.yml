@@ -1,0 +1,35 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+  enforced:
+    module:
+      - productFinder
+id: paragraph.field_answer_type
+field_name: field_answer_type
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: '1'
+      label: 'Next Question'
+    -
+      value: '2'
+      label: 'Product Link'
+    -
+      value: '3'
+      label: 'Category Link'
+    -
+      value: '4'
+      label: 'Shade Selector'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

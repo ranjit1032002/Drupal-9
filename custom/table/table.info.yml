@@ -1,0 +1,5 @@
+name: Table Module
+description: This Is Module For Custom Table
+type: module
+package: Custom Table
+core_version_requirement: ^9
